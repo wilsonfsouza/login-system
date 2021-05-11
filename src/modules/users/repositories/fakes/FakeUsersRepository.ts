@@ -3,7 +3,7 @@ import IUsersRepository from '../IUsersRepository';
 import { User } from '../IUsersRepository';
 
 export default class FakeUsersRepository implements IUsersRepository {
-  private users = [];
+  private users: User[] = [];
 
   public async findById(id: string): Promise<User | undefined> {
     return;
