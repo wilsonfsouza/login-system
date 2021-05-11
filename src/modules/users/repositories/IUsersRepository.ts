@@ -1,6 +1,6 @@
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
 
-type User = {
+export type User = {
   id: string;
   name: string;
   email: string;
