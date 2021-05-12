@@ -7,15 +7,26 @@ interface IRequest {
   password: string;
 }
 
+interface IResponse {
+  user: User;
+}
+
 class AuthenticateUserService {
   constructor(private fakeUsersRepository: FakeUsersRepository) {
   }
 
-  public async execute({ email, password }: IRequest): Promise<void> {
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
     // Check if email exists
+    const user = await this.fakeUsersRepository.findByEmail(email);
     // Throw error if incorrect email
+    if (!user) {
+      throw new AppError('Incorrect email/password combination.', 401)
+    }
     // Check if password matches
     // Throw error if incorrect password
+    return {
+      user
+    }
   }
 }
 
