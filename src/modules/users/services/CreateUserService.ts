@@ -1,5 +1,6 @@
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import { FakeUser as User } from '../infra/entities/User';
+import AppError from '../../../shared/errors/AppError';
 
 interface IRequest {
   name: string;
@@ -8,16 +9,17 @@ interface IRequest {
 }
 
 class CreateUserService {
-  public async execute({ name, email, password }: IRequest): Promise<User> {
-    const fakeUsersRepository = new FakeUsersRepository();
+  constructor(private fakeUsersRepository: FakeUsersRepository) {
+  }
 
-    const checkUserExists = await fakeUsersRepository.findByEmail(email);
+  public async execute({ name, email, password }: IRequest): Promise<User> {
+    const checkUserExists = await this.fakeUsersRepository.findByEmail(email);
 
     if (checkUserExists) {
-      throw new Error('This email address has been already used.')
+      throw new AppError('This email address has been already used.');
     }
 
-    const user = await fakeUsersRepository.create({ name, email, password });
+    const user = await this.fakeUsersRepository.create({ name, email, password });
 
     return user;
   }
