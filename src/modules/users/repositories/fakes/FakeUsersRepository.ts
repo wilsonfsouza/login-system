@@ -33,7 +33,7 @@ export default class FakeUsersRepository implements IUsersRepository {
     return user;
   }
 
-  public async save(user: User): Promise<User | undefined> {
+  public async update(user: User): Promise<User | undefined> {
     return;
   }
 }
