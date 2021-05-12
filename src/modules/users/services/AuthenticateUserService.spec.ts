@@ -25,4 +25,13 @@ describe('AuthenticateUser', () => {
 
     expect(response.user).toEqual(user);
   });
+
+  it('should not be able to authenticate with unexistent credentials', async () => {
+    await expect(
+      authenticateUser.execute({
+        email: 'johndoe@example.com',
+        password: '123456',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 })
