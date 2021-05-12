@@ -1,10 +1,14 @@
+import AppError from '../../../shared/errors/AppError';
 import CreateUserService from '../services/CreateUserService';
+import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 
 let createUser: CreateUserService;
+let fakeUsersRepository: FakeUsersRepository;
 
 describe('CreateUser', () => {
   beforeEach(() => {
-    createUser = new CreateUserService();
+    fakeUsersRepository = new FakeUsersRepository();
+    createUser = new CreateUserService(fakeUsersRepository);
   });
 
   it('should be able to create a new User', async () => {
@@ -29,6 +33,6 @@ describe('CreateUser', () => {
       email: 'johndoe@example.com',
       password: '123456',
     }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(AppError);
   });
 })
