@@ -12,7 +12,8 @@ describe('AuthenticateUser', () => {
   });
 
   it('should be able to authenticate a User', async () => {
-    const user = await authenticateUser.execute({
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
     })
