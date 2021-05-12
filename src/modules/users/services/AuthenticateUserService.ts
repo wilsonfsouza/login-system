@@ -23,7 +23,11 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination.', 401)
     }
     // Check if password matches
+    const passwordMatched = password === user.password
     // Throw error if incorrect password
+    if (!passwordMatched) {
+      throw new AppError('Incorrect email/password combination.', 401);
+    }
     return {
       user
     }
