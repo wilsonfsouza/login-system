@@ -3,9 +3,11 @@ import CreateUserService from '../services/CreateUserService';
 let createUser: CreateUserService;
 
 describe('CreateUser', () => {
-  it('should be able to create a new User', async () => {
+  beforeEach(() => {
     createUser = new CreateUserService();
+  });
 
+  it('should be able to create a new User', async () => {
     const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
@@ -14,5 +16,6 @@ describe('CreateUser', () => {
 
     expect(user).toHaveProperty('id');
   });
+
 
 })
