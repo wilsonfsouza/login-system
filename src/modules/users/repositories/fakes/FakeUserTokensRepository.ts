@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { FakeUserToken as UserToken } from "../../infra/entities/UserToken";
-import IUserTokensRepository from "../IUserTokensRepository";
+import { FakeUserToken as UserToken } from '../../infra/customORM/entities/UserToken';
+import IUserTokensRepository from '../IUserTokensRepository';
 
 class FakeUserTokensRepository implements IUserTokensRepository {
   private userTokens: UserToken[] = [];

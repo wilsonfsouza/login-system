@@ -1,4 +1,4 @@
-import { FakeUserToken as UserToken } from '../infra/entities/UserToken';
+import { FakeUserToken as UserToken } from '../infra/customORM/entities/UserToken';
 
 export default interface IUserTokensRepository {
   generate(user_id: string): Promise<UserToken>;

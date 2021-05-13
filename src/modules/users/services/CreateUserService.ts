@@ -1,5 +1,5 @@
 import IUsersRepository from '../repositories/IUsersRepository';
-import { FakeUser as User } from '../infra/entities/User';
+import { FakeUser as User } from '../infra/customORM/entities/User';
 import AppError from '../../../shared/errors/AppError';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
