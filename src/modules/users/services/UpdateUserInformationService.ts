@@ -1,5 +1,6 @@
 import AppError from "../../../shared/errors/AppError";
 import { FakeUser as User } from "../infra/entities/User";
+import IHashProvider from "../providers/HashProvider/models/IHashProvider";
 import IUsersRepository from "../repositories/IUsersRepository";
 
 interface IRequest {
@@ -13,6 +14,7 @@ interface IRequest {
 class UpdateUserInformationService {
   constructor(
     private usersRepository: IUsersRepository,
+    private hashProvider: IHashProvider,
   ) { }
 
   public async execute({ user_id, name, email, old_password, password }: IRequest): Promise<User> {
@@ -29,6 +31,10 @@ class UpdateUserInformationService {
     }
 
     Object.assign(user, { name, email });
+
+    if (password && old_password) {
+      user.password = await this.hashProvider.generateHash(password);
+    }
 
     return this.usersRepository.update(user);
   }
