@@ -2,17 +2,23 @@ import AppError from '../../../shared/errors/AppError';
 import ResetPasswordService from '../services/ResetPasswordService';
 import FakeUserTokensRespository from '../repositories/fakes/FakeUserTokensRepository';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 let resetPasswordService: ResetPasswordService;
 let fakeUserTokensRepository: FakeUserTokensRespository;
 let fakeUsersRepository: FakeUsersRepository;
+let fakeHashProvider: FakeHashProvider;
 
 describe('ResetPasswordService', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeUserTokensRepository = new FakeUserTokensRespository();
+    fakeHashProvider = new FakeHashProvider();
+
     resetPasswordService = new ResetPasswordService(
-      fakeUserTokensRepository
+      fakeUserTokensRepository,
+      fakeUsersRepository,
+      fakeHashProvider
     );
   });
 
@@ -25,7 +31,8 @@ describe('ResetPasswordService', () => {
 
     const { token } = await fakeUserTokensRepository.generate(user.id);
 
-    // Check if generateHash was called
+    const generatedHash = jest.spyOn(fakeHashProvider, 'generateHash');
+
     await resetPasswordService.execute({
       password: 'new-password',
       token,
@@ -33,6 +40,7 @@ describe('ResetPasswordService', () => {
 
     const updatedUser = await fakeUsersRepository.findById(user.id);
 
+    expect(generatedHash).toHaveBeenCalledWith('new-password');
     expect(updatedUser?.password).toBe('new-password');
   });
 
