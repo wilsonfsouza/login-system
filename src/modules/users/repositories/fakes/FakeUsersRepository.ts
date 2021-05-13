@@ -1,8 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import ICreateUserDTO from '../../dtos/ICreateUserDTO';
 import IUsersRepository from '../IUsersRepository';
-import { User } from '../IUsersRepository';
-import { FakeUser } from '../../infra/entities/User';
+import { FakeUser as User } from '../../infra/entities/User';
 
 export default class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
@@ -22,7 +21,7 @@ export default class FakeUsersRepository implements IUsersRepository {
     email,
     password
   }: ICreateUserDTO): Promise<User> {
-    const user = new FakeUser({
+    const user = new User({
       id: uuidv4(),
       name,
       email,
