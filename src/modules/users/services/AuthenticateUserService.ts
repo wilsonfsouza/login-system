@@ -1,4 +1,3 @@
-import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import IUsersRepository from '../repositories/IUsersRepository';
 import { FakeUser as User } from '../infra/entities/User';
 import AppError from '../../../shared/errors/AppError';
