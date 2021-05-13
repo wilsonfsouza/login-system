@@ -39,6 +39,15 @@ class UpdateUserInformationService {
     }
 
     if (password && old_password) {
+      const isSamePassword = await this.hashProvider.compareHash(
+        old_password,
+        user.password,
+      );
+
+      if (!isSamePassword) {
+        throw new AppError('Old password does not match.');
+      }
+
       user.password = await this.hashProvider.generateHash(password);
     }
 
