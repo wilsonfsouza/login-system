@@ -1,4 +1,5 @@
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 import { FakeUser as User } from '../infra/entities/User';
 import AppError from '../../../shared/errors/AppError';
 
@@ -12,11 +13,11 @@ interface IResponse {
 }
 
 class AuthenticateUserService {
-  constructor(private fakeUsersRepository: FakeUsersRepository) {
+  constructor(private usersRepository: IUsersRepository) {
   }
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
-    const user = await this.fakeUsersRepository.findByEmail(email);
+    const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('Incorrect email/password combination.', 401);
