@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { FakeUserToken as UserToken } from '../../../infra/entities/UserToken';
+import { FakeUserToken as UserToken } from '../entities/UserToken';
 import IUserTokensRepository from '../../../repositories/IUserTokensRepository';
 import { user_tokens } from '../../../../../shared/infra/customORM/fakeDatabase/user_tokens';
 

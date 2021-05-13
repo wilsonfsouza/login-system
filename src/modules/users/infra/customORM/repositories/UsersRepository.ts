@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import ICreateUserDTO from '../../../dtos/ICreateUserDTO';
 import IUsersRepository from '../../../repositories/IUsersRepository';
-import { FakeUser as User } from '../../../infra/entities/User';
+import { FakeUser as User } from '../entities/User';
 import { users } from '../../../../../shared/infra/customORM/fakeDatabase/users';
 
 export default class UsersRepository implements IUsersRepository {
