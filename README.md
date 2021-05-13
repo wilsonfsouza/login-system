@@ -96,6 +96,16 @@ This app has open and private routes. Private routes expect a **Bearer token** i
 ```bash
 # Running tests
 $ yarn test
+
+# Coverage Report
+$ yarn test --coverage
+
+# =============================== Coverage summary ===============================
+# Statements   : 99.11% ( 223/225 )
+# Branches     : 97.62% ( 41/42 )
+# Functions    : 100% ( 10/10 )
+# Lines        : 99.11% ( 223/225 )
+# ================================================================================
 ```
 ---
 
