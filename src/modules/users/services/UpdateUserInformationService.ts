@@ -20,6 +20,8 @@ class UpdateUserInformationService {
       throw new AppError('User does not exist.');
     }
 
+    Object.assign(user, { name, email });
+
     return this.usersRepository.update(user);
   }
 }

@@ -11,6 +11,7 @@ describe('UpdateProfile', () => {
       fakeUsersRepository
     );
   });
+
   it('should be able to update the user information', async () => {
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
