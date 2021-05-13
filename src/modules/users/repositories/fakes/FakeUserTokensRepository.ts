@@ -12,3 +12,5 @@ class FakeUserTokensRepository implements IUserTokensRepository {
     return;
   }
 }
+
+export default FakeUserTokensRepository;
