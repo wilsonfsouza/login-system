@@ -1,3 +1,4 @@
+import { addHours, isAfter } from "date-fns";
 import AppError from "../../../shared/errors/AppError";
 import IHashProvider from "../providers/HashProvider/models/IHashProvider";
 import IUsersRepository from "../repositories/IUsersRepository";
@@ -27,8 +28,17 @@ class ResetPasswordService {
     if (!user) {
       throw new AppError('User does not exist.');
     }
-    // Get when the token was created
-    // Check if token has expired
+
+    const createdAtToken = userToken.created_at;
+
+    const dateToBeCompared = addHours(createdAtToken, 2);
+
+    const isDateAfter2hours = isAfter(Date.now(), dateToBeCompared);
+
+    if (isDateAfter2hours) {
+      throw new AppError('Token has expired.');
+    }
+
     user.password = await this.hashProvider.generateHash(password);
 
     await this.usersRepository.update(user);
