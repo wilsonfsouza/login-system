@@ -35,7 +35,7 @@ describe('AuthenticateUser', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to authenticate a user with wrong password', async () => {
+  it('should not be able to authenticate a user with the wrong password', async () => {
     await fakeUsersRepository.create({
       name: 'John Doe',
       email: 'johndoe@example.com',
@@ -50,7 +50,7 @@ describe('AuthenticateUser', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to authenticate a user with wrong username', async () => {
+  it('should not be able to authenticate a user with the wrong username', async () => {
     await fakeUsersRepository.create({
       name: 'John Doe',
       email: 'johndoe@example.com',
