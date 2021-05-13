@@ -31,7 +31,7 @@ describe('ResetPasswordService', () => {
 
     const { token } = await fakeUserTokensRepository.generate(user.id);
 
-    const generatedHash = jest.spyOn(fakeHashProvider, 'generateHash');
+    const generateHash = jest.spyOn(fakeHashProvider, 'generateHash');
 
     await resetPasswordService.execute({
       password: 'new-password',
@@ -40,7 +40,7 @@ describe('ResetPasswordService', () => {
 
     const updatedUser = await fakeUsersRepository.findById(user.id);
 
-    expect(generatedHash).toHaveBeenCalledWith('new-password');
+    expect(generateHash).toHaveBeenCalledWith('new-password');
     expect(updatedUser?.password).toBe('new-password');
   });
 
