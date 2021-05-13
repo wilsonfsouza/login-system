@@ -1,4 +1,5 @@
 import AppError from "../../../shared/errors/AppError";
+import { FakeUser as User } from "../infra/entities/User";
 import IUsersRepository from "../repositories/IUsersRepository";
 
 interface IRequest {
@@ -12,13 +13,14 @@ class UpdateUserInformationService {
     private usersRepository: IUsersRepository,
   ) { }
 
-  public async execute({ user_id, name, email }: IRequest): Promise<void> {
+  public async execute({ user_id, name, email }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('User does not exist.');
     }
 
+    return this.usersRepository.update(user);
   }
 }
 
