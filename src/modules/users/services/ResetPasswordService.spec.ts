@@ -3,7 +3,7 @@ import ResetPasswordService from '../services/ResetPasswordService';
 import FakeUserTokensRespository from '../repositories/fakes/FakeUserTokensRepository';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 
-let createUser: ResetPasswordService;
+let resetPasswordService: ResetPasswordService;
 let fakeUserTokensRepository: FakeUserTokensRespository;
 let fakeUsersRepository: FakeUsersRepository;
 
@@ -11,7 +11,7 @@ describe('ResetPasswordService', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeUserTokensRepository = new FakeUserTokensRespository();
-    createUser = new ResetPasswordService(
+    resetPasswordService = new ResetPasswordService(
       fakeUserTokensRepository
     );
   });
@@ -22,12 +22,17 @@ describe('ResetPasswordService', () => {
       email: 'johndoe@example.com',
       password: '1234'
     });
-    // get the token
+
     const { token } = await fakeUserTokensRepository.generate(user.id);
 
     // Check if generateHash was called
     // reset password
-    // get the updated user
+    await resetPasswordService.execute({
+      password: 'new-password',
+      token,
+    });
+
+    const updatedUser = await fakeUsersRepository.findById(user.id);
   });
 
 })
