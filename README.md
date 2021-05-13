@@ -60,6 +60,42 @@ $ yarn install
 $ cp .env.example .env
 ```
 
+### Folder structure
+
+```bash
+src
+├── config
+├── modules
+│   └── users
+│       ├── dtos
+│       ├── infra
+│       │   ├── customORM
+│       │   │   ├── entities
+│       │   │   └── repositories
+│       │   ├── http
+│       │   │   ├── controllers
+│       │   │   └── routes
+│       │   └── middlewares
+│       ├── providers
+│       │   └── HashProvider
+│       │       ├── fakes
+│       │       ├── implementations
+│       │       └── models
+│       ├── repositories
+│       │   └── fakes
+│       └── services
+├── shared
+│   ├── errors
+│   └── infra
+│       ├── customORM
+│       │   └── fakeDatabase
+│       └── http
+│           └── routes
+└── @types
+
+28 directories
+```
+
 ### Understanding .env
 
 |key|description|default
