@@ -5,7 +5,7 @@ import UpdateUserInformationService from '../../../services/UpdateUserInformatio
 import UsersRepository from '../../customORM/repositories/UsersRepository';
 
 export default class UserInfoController {
-  public async get(request: Request, response: Response): Promise<Response> {
+  public async show(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id;
 
     const usersRepository = new UsersRepository();

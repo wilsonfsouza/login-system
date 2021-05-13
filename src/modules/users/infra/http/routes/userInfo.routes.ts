@@ -11,7 +11,7 @@ userInfoRouter.use(ensureUserAuthenticated);
 
 userInfoRouter.get(
   '/',
-  userInfoController.get);
+  userInfoController.show);
 
 userInfoRouter.put(
   '/',
