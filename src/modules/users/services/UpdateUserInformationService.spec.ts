@@ -1,3 +1,4 @@
+import AppError from '../../../shared/errors/AppError';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import UpdateUserInformationService from './UpdateUserInformationService';
 
@@ -29,4 +30,25 @@ describe('UpdateProfile', () => {
     expect(updatedUser.email).toBe('johnnydoe@example.com');
   });
 
+  it('should not be able to update email to an email already in use', async () => {
+    await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    });
+
+    const user = await fakeUsersRepository.create({
+      name: 'Jon Doe',
+      email: 'jondoe@example.com',
+      password: '123456',
+    });
+
+    await expect(
+      updateUserInformationService.execute({
+        user_id: user.id,
+        name: 'Johnny Doe',
+        email: 'johndoe@example.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });
