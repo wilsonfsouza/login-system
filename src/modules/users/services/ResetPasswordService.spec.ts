@@ -23,7 +23,8 @@ describe('ResetPasswordService', () => {
       password: '1234'
     });
     // get the token
-    const token = await fakeUserTokensRepository.generate(user.id);
+    const { token } = await fakeUserTokensRepository.generate(user.id);
+
     // Check if generateHash was called
     // reset password
     // get the updated user
