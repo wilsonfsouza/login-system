@@ -16,6 +16,17 @@ export default class SessionsController {
       hashProvider
     );
 
-    return response.json({ msg: 'ok' });
+    const { user, token } = await authenticateUserService.execute({
+      email,
+      password
+    });
+
+    const userWithoutPassword = {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+
+    return response.json({ user: userWithoutPassword, token });
   }
 }
