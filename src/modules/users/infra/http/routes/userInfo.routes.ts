@@ -10,7 +10,10 @@ userInfoRouter.use(ensureUserAuthenticated);
 
 userInfoRouter.get(
   '/',
-  userInfoController.get
-);
+  userInfoController.get);
+
+userInfoRouter.put(
+  '/',
+  userInfoController.update);
 
 export default userInfoRouter;
