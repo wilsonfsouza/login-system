@@ -1,3 +1,5 @@
+import { sign } from 'jsonwebtoken';
+import authenticationConfig from '../../../config/authentication';
 import IUsersRepository from '../repositories/IUsersRepository';
 import { FakeUser as User } from '../infra/entities/User';
 import AppError from '../../../shared/errors/AppError';
@@ -10,6 +12,7 @@ interface IRequest {
 
 interface IResponse {
   user: User;
+  token: string;
 }
 
 class AuthenticateUserService {
@@ -35,8 +38,16 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
+    const { secret, expiresIn } = authenticationConfig.jwt;
+
+    const token = sign({}, secret, {
+      subject: user.id,
+      expiresIn,
+    });
+
     return {
-      user
+      user,
+      token,
     }
   }
 }
