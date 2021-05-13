@@ -12,6 +12,7 @@ class ResetPasswordService {
 
   public async execute({ password, token }: IRequest): Promise<void> {
     // Check if user has a valid jwt token
+    const userToken = await this.userTokensRepository.findByToken(token);
     // Get user from userToken.id
     // Get when the token was created
     // Check if token has expired
