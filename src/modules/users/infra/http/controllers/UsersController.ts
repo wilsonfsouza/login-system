@@ -16,6 +16,18 @@ export default class UsersController {
       hashProvider
     );
 
-    return response.json({ msg: 'ok' });
+    const user = await createUserService.execute({
+      name,
+      email,
+      password
+    });
+
+    const userWithoutPassword = {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+
+    return response.json(userWithoutPassword);
   }
 }
