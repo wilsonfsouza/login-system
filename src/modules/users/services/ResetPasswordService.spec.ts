@@ -44,4 +44,13 @@ describe('ResetPasswordService', () => {
     expect(updatedUser?.password).toBe('new-password');
   });
 
+  it('should not be able to reset password without a token', async () => {
+    await expect(
+      resetPasswordService.execute({
+        password: '1234',
+        token: 'invalid-token',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
 })
