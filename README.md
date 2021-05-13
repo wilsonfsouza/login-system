@@ -86,8 +86,8 @@ This app has open and private routes. Private routes expect a **Bearer token** i
 |---|---|---|---|---
 |`/sessions`|POST|Body with user's email and password.|Authenticates user, return a Bearer Token and user's id and email.| ❌
 |`/users`|POST|Body with user's name, email, and password.|Sign up for new users. | ❌
-|`/profile`|GET| - |Shows user profile.|Bearer
-|`/profile`|PUT|Body with user `name`, `email`, `old_password`, `password`, and `password_confirmation`.|Updates user information.|Bearer
+|`/user-info`|GET| - |Shows user profile.|Bearer
+|`/user-info`|PUT|Body with user `name`, `email`, `old_password`, `password`, and `password_confirmation`.|Updates user information.|Bearer
 |`/password/reset`|POST|Body with user's new `password` and `password_confirmation`.|Resets user's password.| ❌
 
 ---
