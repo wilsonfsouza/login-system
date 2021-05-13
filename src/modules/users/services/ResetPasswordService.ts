@@ -1,4 +1,5 @@
 import AppError from "../../../shared/errors/AppError";
+import IUsersRepository from "../repositories/IUsersRepository";
 import IUserTokensRepository from "../repositories/IUserTokensRepository";
 
 interface IRequest {
@@ -8,7 +9,8 @@ interface IRequest {
 
 class ResetPasswordService {
   constructor(
-    private userTokensRepository: IUserTokensRepository
+    private userTokensRepository: IUserTokensRepository,
+    private usersRepository: IUsersRepository,
   ) { }
 
   public async execute({ password, token }: IRequest): Promise<void> {
@@ -18,7 +20,11 @@ class ResetPasswordService {
       throw new AppError('User token does not exist.');
     }
 
-    // Get user from userToken.id
+    const user = await this.usersRepository.findById(userToken.id);
+
+    if (!user) {
+      throw new AppError('User does not exist.');
+    }
     // Get when the token was created
     // Check if token has expired
     // Rewrite Hashed user password
