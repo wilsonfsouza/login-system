@@ -20,6 +20,12 @@ class UpdateUserInformationService {
       throw new AppError('User does not exist.');
     }
 
+    const emailInUse = await this.usersRepository.findByEmail(email);
+
+    if (emailInUse && emailInUse.id !== user_id) {
+      throw new AppError('Email already in use.');
+    }
+
     Object.assign(user, { name, email });
 
     return this.usersRepository.update(user);
