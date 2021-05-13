@@ -20,7 +20,8 @@ class FakeUserTokensRepository implements IUserTokensRepository {
   }
 
   public async findByToken(token: string): Promise<UserToken | undefined> {
-    return;
+    const findUserToken = this.userTokens.find(userToken => userToken.token === token);
+    return findUserToken;
   }
 }
 
