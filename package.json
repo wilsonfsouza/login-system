@@ -9,10 +9,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.23",
     "@types/uuid": "^8.3.0",

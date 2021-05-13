@@ -1,6 +1,7 @@
-import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 import { FakeUser as User } from '../infra/entities/User';
 import AppError from '../../../shared/errors/AppError';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
   name: string;
@@ -9,17 +10,26 @@ interface IRequest {
 }
 
 class CreateUserService {
-  constructor(private fakeUsersRepository: FakeUsersRepository) {
+  constructor(
+    private usersRepository: IUsersRepository,
+    private hashProvider: IHashProvider,
+  ) {
   }
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
-    const checkUserExists = await this.fakeUsersRepository.findByEmail(email);
+    const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
       throw new AppError('This email address has been already used.');
     }
 
-    const user = await this.fakeUsersRepository.create({ name, email, password });
+    const hashedPassword = await this.hashProvider.generateHash(password);
+
+    const user = await this.usersRepository.create({
+      name,
+      email,
+      password: hashedPassword
+    });
 
     return user;
   }
