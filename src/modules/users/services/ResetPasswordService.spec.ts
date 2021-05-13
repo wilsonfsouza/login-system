@@ -26,13 +26,14 @@ describe('ResetPasswordService', () => {
     const { token } = await fakeUserTokensRepository.generate(user.id);
 
     // Check if generateHash was called
-    // reset password
     await resetPasswordService.execute({
       password: 'new-password',
       token,
     });
 
     const updatedUser = await fakeUsersRepository.findById(user.id);
+
+    expect(updatedUser?.password).toBe('new-password');
   });
 
 })
