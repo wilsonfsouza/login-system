@@ -7,7 +7,9 @@ let updateUserInformationService: UpdateUserInformationService;
 describe('UpdateProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
-    updateUserInformationService = new UpdateUserInformationService();
+    updateUserInformationService = new UpdateUserInformationService(
+      fakeUsersRepository
+    );
   });
   it('should be able to update the user information', async () => {
     const user = await fakeUsersRepository.create({
