@@ -1,11 +1,16 @@
 import IUserTokensRepository from "../repositories/IUserTokensRepository";
 
+interface IRequest {
+  password: string;
+  token: string;
+}
+
 class ResetPasswordService {
   constructor(
     private userTokensRepository: IUserTokensRepository
   ) { }
 
-  public async execute(): Promise<void> {
+  public async execute({ password, token }: IRequest): Promise<void> {
     // Check if user has a valid jwt token
     // Get user from userToken.id
     // Get when the token was created
