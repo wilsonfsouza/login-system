@@ -8,7 +8,8 @@ export default class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
   public async findById(id: string): Promise<User | undefined> {
-    return;
+    const user = this.users.find(user => user.id === id);
+    return user;
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
