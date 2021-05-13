@@ -34,6 +34,13 @@ Table of Contents
 
 This is login system that allows users to sign in, sign up, reset password, update user information, and display user information once logged in.
 
+Non-authenticated users can:
+- Sign up
+- Sign in
+
+Authenticated users can:
+- See and modify their information (name, email, and password)
+
 ---
 
 ## 🚀 [](https://github.com/wilsonfsouza/login-system#how-to-run-the-project)How to run the project
@@ -124,7 +131,6 @@ This app has open and private routes. Private routes expect a **Bearer token** i
 |`/users`|POST|Body with user's name, email, and password.|Sign up for new users. | ❌
 |`/user-info`|GET| - |Shows user profile.|Bearer
 |`/user-info`|PUT|Body with user `name`, `email`, `old_password`, `password`, and `password_confirmation`.|Updates user information.|Bearer
-|`/password/reset`|POST|Body with user's new `password` and `password_confirmation`.|Resets user's password.| ❌
 
 ---
 
