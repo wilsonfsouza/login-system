@@ -61,4 +61,22 @@ describe('UpdateProfile', () => {
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
+
+  it('should be able to update the password using an old password', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    });
+
+    const updatedUser = await updateUserInformationService.execute({
+      user_id: user.id,
+      name: 'Johnny Doe',
+      email: 'johnnydoe@example.com',
+      old_password: '123456',
+      password: '123123',
+    });
+
+    expect(updatedUser.password).toBe('123123');
+  });
 });
