@@ -1,3 +1,4 @@
+import AppError from "../../../shared/errors/AppError";
 import IUserTokensRepository from "../repositories/IUserTokensRepository";
 
 interface IRequest {
@@ -11,8 +12,12 @@ class ResetPasswordService {
   ) { }
 
   public async execute({ password, token }: IRequest): Promise<void> {
-    // Check if user has a valid jwt token
     const userToken = await this.userTokensRepository.findByToken(token);
+
+    if (!userToken) {
+      throw new AppError('User token does not exist.');
+    }
+
     // Get user from userToken.id
     // Get when the token was created
     // Check if token has expired
