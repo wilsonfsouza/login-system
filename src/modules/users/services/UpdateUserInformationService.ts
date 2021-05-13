@@ -32,6 +32,12 @@ class UpdateUserInformationService {
 
     Object.assign(user, { name, email });
 
+    if (password && !old_password) {
+      throw new AppError(
+        'You need to enter your old password to create a new password.',
+      );
+    }
+
     if (password && old_password) {
       user.password = await this.hashProvider.generateHash(password);
     }
