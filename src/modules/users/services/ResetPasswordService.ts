@@ -1,5 +1,9 @@
+import IUserTokensRepository from "../repositories/IUserTokensRepository";
+
 class ResetPasswordService {
-  constructor() { }
+  constructor(
+    private userTokensRepository: IUserTokensRepository
+  ) { }
 
   public async execute(): Promise<void> {
     // Check if user has a valid jwt token
@@ -10,3 +14,5 @@ class ResetPasswordService {
     // Update user information
   }
 }
+
+export default ResetPasswordService;
