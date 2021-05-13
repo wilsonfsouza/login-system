@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { FakeUserToken as UserToken } from "../../infra/entities/UserToken";
 import IUserTokensRepository from "../IUserTokensRepository";
 
@@ -5,7 +6,17 @@ class FakeUserTokensRepository implements IUserTokensRepository {
   private userTokens: UserToken[] = [];
 
   public async generate(user_id: string): Promise<UserToken> {
-    return;
+    const userToken = new UserToken({
+      id: uuidv4(),
+      token: uuidv4(),
+      user_id,
+      created_at: new Date(),
+      updated_at: new Date()
+    });
+
+    this.userTokens.push(userToken);
+
+    return userToken;
   }
 
   public async findByToken(token: string): Promise<UserToken | undefined> {
