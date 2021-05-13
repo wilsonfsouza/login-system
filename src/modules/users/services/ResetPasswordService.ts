@@ -1,4 +1,5 @@
 import AppError from "../../../shared/errors/AppError";
+import IHashProvider from "../providers/HashProvider/models/IHashProvider";
 import IUsersRepository from "../repositories/IUsersRepository";
 import IUserTokensRepository from "../repositories/IUserTokensRepository";
 
@@ -11,6 +12,7 @@ class ResetPasswordService {
   constructor(
     private userTokensRepository: IUserTokensRepository,
     private usersRepository: IUsersRepository,
+    private hashProvider: IHashProvider,
   ) { }
 
   public async execute({ password, token }: IRequest): Promise<void> {
@@ -27,9 +29,8 @@ class ResetPasswordService {
     }
     // Get when the token was created
     // Check if token has expired
-    // Rewrite Hashed user password
-    // Update user information
-    user.password = password;
+    user.password = await this.hashProvider.generateHash(password);
+
     await this.usersRepository.update(user);
   }
 }
