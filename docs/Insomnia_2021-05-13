@@ -1,0 +1,339 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v2021.3.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2021-05-13T20:52:08.797Z",
+				"time": 44.812999999999995,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3333/sessions",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"email\": \"wilson.franca.92@gmail.com\",\n\t\"password\": \"dac9630aec642a428cd73f4be0a03569\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "313"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"139-44U8OEFFcqXugSJrTMFazGr5+vw\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 13 May 2021 17:19:56 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 313,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"user\":{\"id\":\"1bb2f264-406f-4ab2-b674-9bf492dc2380\",\"name\":\"Wilson Franca\",\"email\":\"wilson.franca.92@gmail.com\"},\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA5MjYzOTYsImV4cCI6MTYyMTAxMjc5Niwic3ViIjoiMWJiMmYyNjQtNDA2Zi00YWIyLWI2NzQtOWJmNDkyZGMyMzgwIn0.WZUPHPj2O35I-LA4X38WFZ6g-SN2sbGhERwDKn2UM9Y\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 44.812999999999995,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Authenticate"
+			},
+			{
+				"startedDateTime": "2021-05-13T20:52:08.797Z",
+				"time": 45.762,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3333/users",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"name\": \"Clara Limongi\",\n\t\"email\": \"clara@provi.com.br\",\n\t\"password\": \"8cd73f4be0a03569dac9630aec642a42\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "171"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"ab-ggm1qfhrWZiLMk70USkK+qgng8w\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 13 May 2021 16:11:47 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 171,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":\"8fc324c1-e0d6-4970-838c-24978ee9e272\",\"name\":\"Clara Limongi\",\"email\":\"clara@provi.com.br\",\"password\":\"$2a$08$yo.FyoB/wchUNxq7ecILduI8tfxhfmOKWJYtpzJdI8hImqU3C0K/C\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 45.762,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Register"
+			},
+			{
+				"startedDateTime": "2021-05-13T20:52:08.797Z",
+				"time": 2.471,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3333/user-info",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA5MjYzOTYsImV4cCI6MTYyMTAxMjc5Niwic3ViIjoiMWJiMmYyNjQtNDA2Zi00YWIyLWI2NzQtOWJmNDkyZGMyMzgwIn0.WZUPHPj2O35I-LA4X38WFZ6g-SN2sbGhERwDKn2UM9Y"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "114"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"72-iNyp1DNQWgbw5UYzE7GVmDSq0Tg\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 13 May 2021 17:18:03 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 114,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":\"1bb2f264-406f-4ab2-b674-9bf492dc2380\",\"name\":\"Wilson Franca de Souza\",\"email\":\"wilson.franca.92@gmail.com\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.471,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Show User Info"
+			},
+			{
+				"startedDateTime": "2021-05-13T20:52:08.797Z",
+				"time": 51.568999999999996,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:3333/user-info",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA5MjYzOTYsImV4cCI6MTYyMTAxMjc5Niwic3ViIjoiMWJiMmYyNjQtNDA2Zi00YWIyLWI2NzQtOWJmNDkyZGMyMzgwIn0.WZUPHPj2O35I-LA4X38WFZ6g-SN2sbGhERwDKn2UM9Y"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"name\": \"Wilson Franca de Souza\",\n\t\"email\": \"wilson.franca.92@gmail.com\",\n\t\"old_password\": \"dac9630aec642a428cd73f4be0a03569\",\n\t\"password\": \"123456\",\n\t\"password_confirmation\": \"1234567\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "114"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"72-iNyp1DNQWgbw5UYzE7GVmDSq0Tg\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 13 May 2021 17:19:41 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 114,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":\"1bb2f264-406f-4ab2-b674-9bf492dc2380\",\"name\":\"Wilson Franca de Souza\",\"email\":\"wilson.franca.92@gmail.com\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 51.568999999999996,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Update User Info"
+			}
+		]
+	}
+}

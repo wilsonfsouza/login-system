@@ -5,14 +5,16 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
+    "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/index.ts",
     "test": "jest"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "celebrate": "^14.0.0",
     "date-fns": "^2.21.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "uuid": "^8.3.2"
   },

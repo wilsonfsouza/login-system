@@ -34,6 +34,13 @@ Table of Contents
 
 This is login system that allows users to sign in, sign up, reset password, update user information, and display user information once logged in.
 
+Non-authenticated users can:
+- Sign up
+- Sign in
+
+Authenticated users can:
+- See and modify their information (name, email, and password)
+
 ---
 
 ## 🚀 [](https://github.com/wilsonfsouza/login-system#how-to-run-the-project)How to run the project
@@ -58,6 +65,42 @@ $ yarn install
 # Make a copy of '.env.example' to '.env'
 # and set with YOUR environment variables.
 $ cp .env.example .env
+```
+
+### Folder structure
+
+```bash
+src
+├── config
+├── modules
+│   └── users
+│       ├── dtos
+│       ├── infra
+│       │   ├── customORM
+│       │   │   ├── entities
+│       │   │   └── repositories
+│       │   ├── http
+│       │   │   ├── controllers
+│       │   │   └── routes
+│       │   └── middlewares
+│       ├── providers
+│       │   └── HashProvider
+│       │       ├── fakes
+│       │       ├── implementations
+│       │       └── models
+│       ├── repositories
+│       │   └── fakes
+│       └── services
+├── shared
+│   ├── errors
+│   └── infra
+│       ├── customORM
+│       │   └── fakeDatabase
+│       └── http
+│           └── routes
+└── @types
+
+28 directories
 ```
 
 ### Understanding .env
@@ -86,9 +129,8 @@ This app has open and private routes. Private routes expect a **Bearer token** i
 |---|---|---|---|---
 |`/sessions`|POST|Body with user's email and password.|Authenticates user, return a Bearer Token and user's id and email.| ❌
 |`/users`|POST|Body with user's name, email, and password.|Sign up for new users. | ❌
-|`/profile`|GET| - |Shows user profile.|Bearer
-|`/profile`|PUT|Body with user `name`, `email`, `old_password`, `password`, and `password_confirmation`.|Updates user information.|Bearer
-|`/password/reset`|POST|Body with user's new `password` and `password_confirmation`.|Resets user's password.| ❌
+|`/user-info`|GET| - |Shows user profile.|Bearer
+|`/user-info`|PUT|Body with user `name`, `email`, `old_password`, `password`, and `password_confirmation`.|Updates user information.|Bearer
 
 ---
 
@@ -96,6 +138,16 @@ This app has open and private routes. Private routes expect a **Bearer token** i
 ```bash
 # Running tests
 $ yarn test
+
+# Coverage Report
+$ yarn test --coverage
+
+# =============================== Coverage summary ===============================
+# Statements   : 99.11% ( 223/225 )
+# Branches     : 97.62% ( 41/42 )
+# Functions    : 100% ( 10/10 )
+# Lines        : 99.11% ( 223/225 )
+# ================================================================================
 ```
 ---
 
