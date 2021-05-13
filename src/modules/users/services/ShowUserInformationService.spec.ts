@@ -7,7 +7,7 @@ let showUserInformationService: ShowUserInformationService;
 describe('ShowProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
-    showUserInformationService = new ShowUserInformationService();
+    showUserInformationService = new ShowUserInformationService(fakeUsersRepository);
   });
 
   it('should be able to show the user information', async () => {
@@ -21,8 +21,8 @@ describe('ShowProfile', () => {
       user_id: user.id,
     });
 
-    expect(userInformation.name).toBe('John Doe');
-    expect(userInformation.email).toBe('johndoe@example.com');
+    expect(userInformation?.name).toBe('John Doe');
+    expect(userInformation?.email).toBe('johndoe@example.com');
   });
 
 });
