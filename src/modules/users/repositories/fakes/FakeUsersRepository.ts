@@ -8,7 +8,8 @@ export default class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
   public async findById(id: string): Promise<User | undefined> {
-    return;
+    const user = this.users.find(user => user.id === id);
+    return user;
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
@@ -33,7 +34,9 @@ export default class FakeUsersRepository implements IUsersRepository {
     return user;
   }
 
-  public async update(user: User): Promise<User | undefined> {
-    return;
+  public async update(user: User): Promise<User> {
+    const userIndex = this.users.findIndex(findUser => findUser.id === user.id);
+    this.users[userIndex] = user;
+    return user;
   }
 }
